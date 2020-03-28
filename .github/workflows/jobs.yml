@@ -8,6 +8,7 @@ jobs:
       - name: job A step 1
         run: |
           echo "job A step 1"
+
       - name: job A step 2
         run: |
           echo "job A step 2"
@@ -19,3 +20,19 @@ jobs:
       - name: job B step 1
         run: |
           echo "job B step 1"
+          echo "job B" >> job_b.txt
+          cat job_b.txt
+      - name: job B step 2
+        run: |
+          echo "job B step 2"
+          cat job_b.txt
+
+  job_C:
+    name: job C
+    needs: job_A
+    runs-on: ubuntu-latest
+    steps:
+      - name: job C step 1
+        run: |
+          echo "job C step 1"
+          cat job_b.txt
