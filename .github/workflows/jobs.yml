@@ -23,6 +23,11 @@ jobs:
         run: |
           echo "job A step 4"
 
+      - name: job A step 5
+        if: always()
+        run: |
+          echo "job A step 5"
+
   job_B:
     name: job B
     runs-on: ubuntu-latest
@@ -32,6 +37,7 @@ jobs:
           echo "job B step 1"
           echo "job B" >> job_b.txt
           cat job_b.txt
+
       - name: job B step 2
         run: |
           echo "job B step 2"
