@@ -12,6 +12,16 @@ jobs:
       - name: job A step 2
         run: |
           echo "job A step 2"
+          false
+
+      - name: job A step 3
+        if: failure()
+        run: |
+          echo "job A step 3"
+
+      - name: job A step 4
+        run: |
+          echo "job A step 4"
 
   job_B:
     name: job B
@@ -35,4 +45,3 @@ jobs:
       - name: job C step 1
         run: |
           echo "job C step 1"
-          cat job_b.txt
